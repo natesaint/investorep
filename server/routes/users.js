@@ -2,6 +2,7 @@
  * Routes that have to do with users and accounts
  */
 var express = require('express');
+var Users = require('../models/users.js');
 var router = express.Router();
 
 /**
