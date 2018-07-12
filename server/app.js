@@ -8,7 +8,7 @@ var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Register routes
+// Link routes with respective modules
 app.use('/', index);
 app.use('/users', users);
 
