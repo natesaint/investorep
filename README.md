@@ -9,5 +9,8 @@ npm start
 
 Manually run Express and dev server(optional)
 ```
-
+ng serve --proxy-config proxy.config.json
+nodemon server/app.js --watch server
 ```
+
+Detailed views of the running scripts can be found in package.json
