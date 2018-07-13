@@ -1,10 +1,13 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
 
 var index = require('./routes/index.js');
 var users = require('./routes/users.js');
 
+require('dotenv').config();
 var app = express();
+mongoose.connect(process.env.DB_CONNECTION_STRING);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

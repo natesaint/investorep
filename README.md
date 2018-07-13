@@ -2,6 +2,10 @@
 Make smarter investment decisions based on the reputations of others.
 
 ## Run locally
+A .env file containing database credentials, api keys, etc. is required for
+running this site. An example .env file can be found in the root directory as
+.env.example
+
 ```
 npm install
 npm start
