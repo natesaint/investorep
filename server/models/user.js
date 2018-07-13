@@ -31,7 +31,7 @@ UserSchema.pre('save', function(next) {
   bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt){
         if(err) return next(err);
 
-        bcrypt.hash(user.password, salt, function(err, hash){
+        bcrypt.hash(user.password, salt, function(err, hash) {
             if(err) return next(err);
 
             user.password = hash;
@@ -39,6 +39,18 @@ UserSchema.pre('save', function(next) {
         });
     });
 });
+
+/**
+ * Check if the password is valid
+ *
+ * @return bool
+ */
+UserSchema.methods.validPassword = function(password) {
+  bcrypt.hash(password, this.salt, function(err, hash) {
+    if (err) throw err;
+    return this.password === hash;
+  });
+}
 
 // Create and export User model
 var User = mongoose.model('User', UserSchema);
