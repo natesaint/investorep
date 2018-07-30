@@ -91,7 +91,7 @@ router.post('/', function(req, res) {
   user.save(function(err) {
     if (err && err.code === 11000) {
       // Conflict
-      res.status(409).send({
+      res.status(401).send({
         "error": "Username or email already exists"
       });
     } else if (err) {
