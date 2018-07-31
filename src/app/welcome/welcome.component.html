@@ -2,7 +2,7 @@
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"></button>
-      <a class="navbar-brand" href="#">Investorep</a>
+      <a class="navbar-brand" routerLink="/welcome">Investorep</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <form class="navbar-form navbar-right">
@@ -12,8 +12,8 @@
         <div class="form-group">
           <input type="password" placeholder="Password" class="form-control">
         </div>
-        <button type="submit" class="btn btn-success btn-md">Log in</button>
-        <button type="submit" class="btn btn-primary btn-md">Sign up</button>
+        <button type="submit" class="btn btn-success btn-md" routerLink="/login">Log in</button>
+        <button type="submit" class="btn btn-primary btn-md" routerLink="/register">Sign up</button>
       </form>
     </div>
   </div>
