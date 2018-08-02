@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 import { Observable, of } from 'rxjs';
 
@@ -7,7 +8,7 @@ import { Observable, of } from 'rxjs';
 })
 export class AuthenticationService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   login(email:string, password:string): Observable<boolean> {
     console.log(email, password);

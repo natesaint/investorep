@@ -4,6 +4,7 @@ var mongoose = require('mongoose');
 
 var index = require('./routes/index.js');
 var users = require('./routes/users.js');
+var login = require('./routes/login.js');
 
 require('dotenv').config();
 var app = express();
@@ -15,6 +16,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Link routes with respective modules
 app.use('/', index);
 app.use('/users', users);
+app.use('/login', login);
 
 var server = app.listen(3000, function() {
         console.log("Running api on port: " + server.address().port);

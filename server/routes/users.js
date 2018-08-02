@@ -13,9 +13,10 @@ var router = express.Router();
  * All user objects in db displayed with this format
  *     {
  *         _id: "id",
- *         username: "username",
- *         name: "name",
- *         email: "email"
+ *         username: "bob",
+ *         firstName: "Robert",
+ *         lastName: "Bobson",
+ *         email: "bob@email.com"
  *     }
  */
 router.get('/', function(req, res) {
@@ -34,7 +35,8 @@ router.get('/', function(req, res) {
  *     {
  *         _id: "id",
  *         username: "bob",
- *         name: "Robert Bobson",
+ *         firstName: "Robert",
+ *         lastName: "Bobson",
  *         email: "bob@email.com"
  *     }
  */
@@ -54,7 +56,8 @@ router.get('/:username', function(req, res) {
  *     {
  *         _id: "id",
  *         username: "username",
- *         name: "name",
+ *         firstName: "firstName",
+ *         lastName: "lastName",
  *         email: "email"
  *     }
  */
@@ -69,7 +72,8 @@ router.put('/:user_id', function(req, res) {
  * POST a new user to the database
  *
  * Paramaters:
- *     name: name of users
+ *     firstName: first name of users
+ *     lastName: last name of user
  *     username: username for user (unique)
  *     email: email of user (unique)
  *     password: password for account to be hashed
@@ -82,7 +86,8 @@ router.put('/:user_id', function(req, res) {
  */
 router.post('/', function(req, res) {
   let user = new User ({
-    name: req.body.name,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
     username: req.body.username,
     password: req.body.password,
     email: req.body.email

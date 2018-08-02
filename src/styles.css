@@ -1,3 +1,20 @@
 .large-header {
   font-size: 55px;
 }
+
+.app-background-colour {
+  background-color: #FFFFFF;
+}
+
+.register-login-background {
+  background-color: #e6eeff;
+  border-radius: 8px;
+}
+
+.align-left {
+  float: left;
+}
+
+.align-right {
+  float: right;
+}
