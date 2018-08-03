@@ -16,7 +16,6 @@ export class WelcomeComponent implements OnInit {
   constructor(private fb: FormBuilder,
               private authService: AuthenticationService,
               private router: Router) {
-
     // Setup form fields
     this.loginCredentials = this.fb.group({
       email: ['', Validators.compose([Validators.required, Validators.email])],
