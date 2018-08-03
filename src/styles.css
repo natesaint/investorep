@@ -1,14 +1,25 @@
 .large-header {
-  font-size: 55px;
+  font-size: 65px;
+  font-variant: small-caps;
+  font-weight: bold;
+}
+
+.medium-header {
+  font-size: 45px;
+  font-weight: bold;
+}
+
+.nav-colour {
+  background-color: #995323
 }
 
 .app-background-colour {
-  background-color: #FFFFFF;
+  background: linear-gradient(to bottom, #E8A87C, #995323) fixed;
 }
 
 .register-login-background {
-  background-color: #e6eeff;
-  border-radius: 8px;
+  background-color: #f9f9f9;
+  border-radius: 13px;
 }
 
 .align-left {

@@ -1,3 +1,37 @@
-<p>
-  login works!
-</p>
+<nav class="navbar navbar-inverse navbar-static-top bg-secondary">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"></button>
+      <a class="navbar-brand" routerLink="/welcome">Investorep</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <a class="navbar-brand align-right" routerLink="/login">Sign up</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="col-xs-4 child">
+    <div class="panel register-login-background">
+      <h1 class="medium-header">Login</h1>
+      <div class="panel-body">
+        <form role="form">
+          <div class="form-group col-xs-12">
+            <input type="text" name="email" class="form-control input-lg" placeholder="E-mail Address">
+          </div>
+
+          <div class="form-group col-xs-12">
+            <input type="password" name="password" class="form-control input-lg" placeholder="Password">
+          </div>
+
+          <div class="text-center">
+            <input type="submit" value="Log in" class="btn-lg btn-success rounded">
+          </div>
+
+          <a class="navbar-brand link" routerLink="/login">Forgot password?</a>
+          <a class="navbar-brand link" routerLink="/login">Create an account</a>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
