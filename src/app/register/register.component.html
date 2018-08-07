@@ -14,33 +14,51 @@
   <div class="col-xs-4 child">
     <div class="panel register-login-background">
       <h1 class="medium-header">Create an Account</h1>
+      <div class="alert alert-danger" *ngIf="accountDuplicate">
+        <strong>Cannot create account:</strong> the entered username or e-mail address is already associated with another account.
+      </div>
       <div class="panel-body">
         <form role="form" [formGroup]="form" (ngSubmit)="register(form.value)">
-          <div class="form-group col-xs-12">
-            <input type="text" formControlName="firstName" class="form-control" placeholder="First Name" [ngClass]="{ 'is-invalid': submitted }"/>
+          <div class="form-group col-xs-12" [ngClass]="{ 'has-error': submitted && !f.firstName.valid }">
+            <input type="text" formControlName="firstName" class="form-control input-lg" placeholder="First Name"/>
             <div *ngIf="submitted && !f.firstName.valid" class="text-danger">
               <div>* {{errors.firstName}}</div>
             </div>
           </div>
 
-          <div class="form-group col-xs-12">
+          <div class="form-group col-xs-12" [ngClass]="{ 'has-error': submitted && !f.lastName.valid }">
             <input type="text" formControlName="lastName" class="form-control input-lg" placeholder="Last Name"/>
+            <div *ngIf="submitted && !f.lastName.valid" class="text-danger">
+              <div>* {{errors.firstName}}</div>
+            </div>
           </div>
 
-          <div class="form-group col-xs-12">
+          <div class="form-group col-xs-12" [ngClass]="{ 'has-error': submitted && !f.username.valid }">
             <input type="text" formControlName="username" class="form-control input-lg" placeholder="Username"/>
+            <div *ngIf="submitted && !f.username.valid" class="text-danger">
+              <div>* {{errors.firstName}}</div>
+            </div>
           </div>
 
-          <div class="form-group col-xs-12">
+          <div class="form-group col-xs-12" [ngClass]="{ 'has-error': submitted && !f.email.valid }">
             <input type="text" formControlName="email" class="form-control input-lg" placeholder="E-mail Address"/>
+            <div *ngIf="submitted && !f.email.valid" class="text-danger">
+              <div>* {{errors.firstName}}</div>
+            </div>
           </div>
 
-          <div class="form-group col-xs-12">
+          <div class="form-group col-xs-12" [ngClass]="{ 'has-error': submitted && !f.password.valid }">
             <input type="password" formControlName="password" class="form-control input-lg" placeholder="Password"/>
+            <div *ngIf="submitted && !f.password.valid" class="text-danger">
+              <div>* {{errors.firstName}}</div>
+            </div>
           </div>
 
-          <div class="form-group col-xs-12">
+          <div class="form-group col-xs-12" [ngClass]="{ 'has-error': submitted && !f.passwordConfirmation.valid }">
             <input type="password" formControlName="passwordConfirmation" class="form-control input-lg" placeholder="Confirm Password"/>
+            <div *ngIf="submitted && !f.passwordConfirmation.valid" class="text-danger">
+              <div>* {{errors.firstName}}</div>
+            </div>
           </div>
 
           <div class="text-center">
@@ -53,3 +71,5 @@
     </div>
   </div>
 </div>
+
+<app-loading *ngIf="loading"></app-loading>

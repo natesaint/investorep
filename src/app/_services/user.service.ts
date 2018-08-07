@@ -1,17 +1,20 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
 
-import { User } from '../_models/user'
+import { User } from '../_models/user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
+  private url = '/api' + '' + '' + '/users'
+
   constructor(private http: HttpClient) { }
 
-  getAll() {
-
+  getAll(): Observable<User[]> {
+    return this.http.get<User[]>(this.url);
   }
 
   getById(id: string) {
@@ -19,7 +22,8 @@ export class UserService {
   }
 
   create(user: User) {
-
+    console.log('testing');console.log(user.lastName);
+    return this.http.post(this.url, user);
   }
 
   update(user: User) {

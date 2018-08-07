@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 
 import { UserService } from '../_services/user.service';
 import { errorMessages } from '../_constants/error-messages';
+import { User } from '../_models/user';
 
 @Component({
   selector: 'app-register',
@@ -13,6 +14,8 @@ import { errorMessages } from '../_constants/error-messages';
 export class RegisterComponent implements OnInit {
   form: FormGroup;
   submitted: boolean;
+  accountDuplicate: boolean;
+  loading: boolean;
   errors = errorMessages;
 
   constructor(private fb: FormBuilder,
@@ -30,16 +33,31 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.errors.firstName);
+    this.loading = true;
   }
 
+  // Register a new user, send request only when format is validated and handle errors
   register() {
     this.submitted = true;
+    this.accountDuplicate = false;
+
+    let user: User = Object.assign({}, this.form.value);
+
+    if (this.form.valid) {
+      this.userService.create(user).subscribe(
+        data => {
+            console.log('user created');
+        },
+        error => {
+            this.accountDuplicate = true;
+            console.log(error);
+        }
+      );
+    }
   }
 
-  // Return for easy access
+  // Return form controls for easy access
   get f() {
     return this.form.controls;
   }
-
 }
