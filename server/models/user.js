@@ -44,12 +44,12 @@ UserSchema.pre('save', function(next) {
 /**
  * Check if the password is valid
  *
- * @return bool
+ * @return boolean
  */
-UserSchema.methods.validPassword = function(password) {
-  bcrypt.hash(password, this.salt, function(err, hash) {
-    if (err) throw err;
-    return this.password === hash;
+UserSchema.methods.validPassword = function(password, callback) {
+  bcrypt.compare(password, this.password, function(err, isMatch) {
+    if (err) return callback(err);
+    return callback(null, isMatch);
   });
 }
 

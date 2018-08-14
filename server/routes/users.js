@@ -19,7 +19,7 @@ var router = express.Router();
  *         email: "bob@email.com"
  *     }
  */
-router.get('/', function(req, res) {
+router.get('/', auth, function(req, res) {
   User.find({}, function(err, users) {
     if (err) throw err;
     res.status(200).send(users);
@@ -120,7 +120,7 @@ router.delete('/:user_id', function(req, res) {
   User.remove({_id: req.params.user_id}, function(err) {
     if (err) throw err;
     res.status(200).send({
-      "message": "User deleted"
+      "success": true
     });
     console.log('User deleted');
   });
