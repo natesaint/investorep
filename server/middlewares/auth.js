@@ -1,6 +1,7 @@
+var express = require('express');
 var jwt = require('jsonwebtoken');
 
-function  isAuthenticated(req, res, next) {
+function isAuthenticated(req, res, next) {
   var token = req.body.token || req.query.token || req.headers['x-access-token'];
 
   if (token) {
