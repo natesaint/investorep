@@ -22,7 +22,6 @@ export class UserService {
   }
 
   create(user: User) {
-    console.log('testing');console.log(user.lastName);
     return this.http.post(this.url, user);
   }
 
