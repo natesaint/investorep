@@ -26,7 +26,8 @@ router.post('/', function(req, res) {
             username: user.username,
             email: user.email,
             firstName: user.firstName,
-            lastName: user.lastName
+            lastName: user.lastName,
+            _id: user._id
           };
 
           var token = jwt.sign(payload, process.env.SECRET_TOKEN, { expiresIn: 86400 });

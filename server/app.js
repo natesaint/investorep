@@ -5,6 +5,7 @@ var mongoose = require('mongoose');
 var index = require('./routes/index.js');
 var users = require('./routes/users.js');
 var auth = require('./routes/auth.js');
+var dashboard = require('./routes/dashboard.js');
 
 let prefix = '/api';
 require('dotenv').config();
@@ -18,6 +19,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(prefix + '/', index);
 app.use(prefix + '/users', users);
 app.use(prefix + '/auth', auth);
+app.use(prefix + '/dashboard', dashboard);
 
 var server = app.listen(3000, function() {
         console.log("Running api on port: " + server.address().port);

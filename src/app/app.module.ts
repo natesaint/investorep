@@ -10,6 +10,7 @@ import { RegisterComponent } from './register/register.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { LoadingComponent } from './loading/loading.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { LoadingComponent } from './loading/loading.component';
     LoginComponent,
     RegisterComponent,
     NotFoundComponent,
-    LoadingComponent
+    LoadingComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

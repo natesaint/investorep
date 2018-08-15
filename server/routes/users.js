@@ -4,7 +4,6 @@
 var express = require('express');
 var User = require('../models/user.js');
 var router = express.Router();
-//var auth = require('../middlewares/auth.js');
 
 /**
  * GET all users in the database
@@ -20,7 +19,7 @@ var router = express.Router();
  *         email: "bob@email.com"
  *     }
  */
-router.get('/',/* auth,*/ function(req, res) {
+router.get('/', function(req, res) {
   User.find({}, function(err, users) {
     if (err) throw err;
     res.status(200).send(users);

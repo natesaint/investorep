@@ -31,13 +31,16 @@ export class WelcomeComponent implements OnInit {
     if (form.controls['email'].valid && form.controls['password'].valid) {
       this.authService.login(val.email, val.password)
           .subscribe(
-            (success) => {
-              if (success) {
+            data => {
+              if (data.success === true) {
                 console.log("successful login");
-                this.router.navigateByUrl('/');
+                this.router.navigateByUrl('/dashboard');
               } else {
                 this.failedLogin();
               }
+            },
+            error => {
+              this.failedLogin();
             }
           );
     } else {
