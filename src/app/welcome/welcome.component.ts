@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 
 import { AuthenticationService } from '../_services/authentication.service';
+import { regex } from '../_constants/regular-expressions';
 
 @Component({
   selector: 'app-welcome',
@@ -19,7 +20,7 @@ export class WelcomeComponent implements OnInit {
     // Setup form fields
     this.loginCredentials = this.fb.group({
       email: ['', Validators.compose([Validators.required, Validators.email])],
-      password: ['', Validators.required]
+      password: ['', Validators.compose([Validators.required, Validators.pattern(regex.password)])]
     });
   }
 

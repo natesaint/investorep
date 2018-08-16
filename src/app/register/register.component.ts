@@ -3,8 +3,10 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 
 import { UserService } from '../_services/user.service';
-import { errorMessages } from '../_constants/error-messages';
 import { User } from '../_models/user';
+import { PasswordValidation } from './password-match';
+import { errorMessages } from '../_constants/error-messages';
+import { regex } from '../_constants/regular-expressions';
 
 @Component({
   selector: 'app-register',
@@ -23,13 +25,14 @@ export class RegisterComponent implements OnInit {
               private userService: UserService) {
     // Setup the form fields
     this.form = this.fb.group({
-      firstName: ['',            Validators.compose([Validators.required])],
-      lastName: ['',             Validators.compose([Validators.required])],
-      username: ['',             Validators.compose([Validators.required, Validators.pattern('^[0-9A-Za-z_-]{3,15}$')])],
+      firstName: ['',            Validators.compose([Validators.required, Validators.pattern(regex.name)])],
+      lastName: ['',             Validators.compose([Validators.required, Validators.pattern(regex.name)])],
+      username: ['',             Validators.compose([Validators.required, Validators.pattern(regex.username)])],
       email: ['',                Validators.compose([Validators.required, Validators.email])],
-      // Min 8 chars, atleast one uppercase, one lowercase, and one number
-      password: ['',             Validators.compose([Validators.required, Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~]{8,}$')])],
+      password: ['',             Validators.compose([Validators.required, Validators.pattern(regex.password)])],
       passwordConfirmation: ['', Validators.compose([Validators.required, ])]
+    }, {
+      validator: PasswordValidation.PasswordMatch
     });
   }
 

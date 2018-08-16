@@ -29,35 +29,35 @@
           <div class="form-group col-xs-12" [ngClass]="{ 'has-error': submitted && !f.lastName.valid }">
             <input type="text" formControlName="lastName" class="form-control input-lg" placeholder="Last Name"/>
             <div *ngIf="submitted && !f.lastName.valid" class="text-danger">
-              <div>* {{errors.firstName}}</div>
+              <div>* {{errors.lastName}}</div>
             </div>
           </div>
 
           <div class="form-group col-xs-12" [ngClass]="{ 'has-error': submitted && !f.username.valid }">
             <input type="text" formControlName="username" class="form-control input-lg" placeholder="Username"/>
             <div *ngIf="submitted && !f.username.valid" class="text-danger">
-              <div>* {{errors.firstName}}</div>
+              <div>* {{errors.username}}</div>
             </div>
           </div>
 
           <div class="form-group col-xs-12" [ngClass]="{ 'has-error': submitted && !f.email.valid }">
             <input type="text" formControlName="email" class="form-control input-lg" placeholder="E-mail Address"/>
             <div *ngIf="submitted && !f.email.valid" class="text-danger">
-              <div>* {{errors.firstName}}</div>
+              <div>* {{errors.email}}</div>
             </div>
           </div>
 
           <div class="form-group col-xs-12" [ngClass]="{ 'has-error': submitted && !f.password.valid }">
             <input type="password" formControlName="password" class="form-control input-lg" placeholder="Password"/>
             <div *ngIf="submitted && !f.password.valid" class="text-danger">
-              <div>* {{errors.firstName}}</div>
+              <div>* {{errors.password}}</div>
             </div>
           </div>
 
           <div class="form-group col-xs-12" [ngClass]="{ 'has-error': submitted && !f.passwordConfirmation.valid }">
             <input type="password" formControlName="passwordConfirmation" class="form-control input-lg" placeholder="Confirm Password"/>
-            <div *ngIf="submitted && !f.passwordConfirmation.valid" class="text-danger">
-              <div>* {{errors.firstName}}</div>
+            <div *ngIf="submitted && (!f.passwordConfirmation.valid || !f.password.valid)" class="text-danger">
+              <div>* {{errors.passwordConfirmation}}</div>
             </div>
           </div>
 

@@ -4,16 +4,22 @@ var jwt = require('jsonwebtoken');
 function isAuthenticated(req, res, next) {
   var token = req.body.token || req.query.token || req.headers['x-access-token'];
 
-  if (token) {
+  if (token) { // Token
     jwt.verify(token, process.env.SECRET_TOKEN, function(err, decoded) {
       if (err) {
-        return res.json({ success: false, message: 'Failed to authenticate token' });
+        console.log('No token found');
+        return res.status(403).send({
+          success: false,
+          message: 'Failed to authenticate token'
+        });
       } else {
-        req.decoded = decoded;
+        console.log('Token authenticated');
+        req.body.decoded = decoded;
         next();
       }
     });
   } else { // No token
+    console.log('No token found');
     return res.status(403).send({
         success: false,
         message: 'No token found'

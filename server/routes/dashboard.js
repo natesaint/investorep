@@ -19,6 +19,4 @@ router.get('/personal', auth, function(req, res) {
   });
 });
 
-
-
 module.exports = router;

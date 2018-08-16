@@ -16,11 +16,9 @@ router.post('/', function(req, res) {
       res.json({ success: false, message: 'Authentication failed: user not found.'});
     } else if (user) {
       // Check password match
-      console.log(req.body.password);
       user.validPassword(req.body.password, function(err, correct) {
         if (err) throw err;
 
-        console.log(correct);
         if (correct) {
           const payload = {
             username: user.username,

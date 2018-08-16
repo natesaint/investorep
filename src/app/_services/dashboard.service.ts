@@ -3,16 +3,18 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 
 import { User } from '../_models/user';
+import { AuthenticationService } from '../_services/authentication.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DashboardService {
 
-  constructor(private http: HttpClient
+  constructor(private http: HttpClient,
+              private authService: AuthenticationService
               ) { }
 
   getInfo(): Observable<any> {
-    return this.http.get('/api/dashboard/personal');
+    return this.http.get<any>('/api/dashboard/personal', { params: {token: this.authService.getToken()} });
   }
 }

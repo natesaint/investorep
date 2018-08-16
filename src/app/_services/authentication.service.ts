@@ -49,4 +49,8 @@ export class AuthenticationService {
         const expiresAt = JSON.parse(expiration);
         return moment(expiresAt);
   }
+
+  getToken() {
+    return localStorage.getItem('token');
+  }
 }

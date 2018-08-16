@@ -1,4 +1,8 @@
 export const errorMessages = {
-  'firstName': "first name error",
-  'lastName': "last name error"
+  'firstName': "Please enter a first name",
+  'lastName': "Please enter a last name",
+  'password': "Please enter a combination of at least 8 characters, including at least one uppercase letter, one lowercase letter, and one number",
+  'username': "Please enter a combination of 3 to 18 characters including letters, numbers, _, and/or -",
+  'email': "Please enter a valid email address",
+  'passwordConfirmation': "Passwords do not match"
 }
