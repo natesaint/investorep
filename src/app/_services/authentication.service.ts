@@ -18,6 +18,8 @@ export class AuthenticationService {
                     .pipe(
                       map(res => {
                         if (res && res.token) {
+                          console.log('Checking res');
+                          console.log(res);
                           this.setSession(res);
                         }
                         return res;

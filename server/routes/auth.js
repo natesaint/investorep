@@ -33,7 +33,8 @@ router.post('/', function(req, res) {
           res.json({
             success: true,
             message: "Token sent",
-            token: token
+            token: token,
+            expiresIn: 86400
           });
         } else {
           res.json({ success: false, message: 'Authentication failed: incorrect password.'});

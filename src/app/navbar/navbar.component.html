@@ -1,0 +1,36 @@
+<nav class="navbar navbar-inverse navbar-static-top bg-secondary">
+  <div class="container"><!--fluid/-->
+    <div class="navbar-header">
+      <!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"></button> -->
+      <a class="navbar-brand" routerLink="/welcome">Investorep</a>
+    </div>
+
+    <ul class="nav navbar-nav">
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Analyze <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Stocks</a></li>
+          <li><a href="#">Sectors</a></li>
+          <li><a href="#">Crowdsourced Information</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Crowdsource</a></li>
+      <li><a href="#">Your Portfolio</a></li>
+      <li><a href="#">Reputation</a></li>
+    </ul>
+
+    <div id="navbar" class="navbar-collapse collapse" *ngIf="!isLoggedIn()">
+      <form  [formGroup]="loginCredentials" (ngSubmit)="login(loginCredentials.value)" class="navbar-form navbar-right">
+        <div class="form-group">
+          <input type="text" placeholder="Email" class="form-control" formControlName="email">
+        </div>
+        <div class="form-group">
+          <input type="password" placeholder="Password" class="form-control" formControlName="password">
+        </div>
+        <button type="submit" class="btn btn-success btn-md">Log in</button>
+        <button type="button" class="btn btn-primary btn-md" routerLink="/register">Sign up</button>
+      </form>
+    </div>
+
+    <a class="navbar-brand align-right" *ngIf="isLoggedIn()" (click)="logout()">Log out</a>
+  </div>
+</nav>
