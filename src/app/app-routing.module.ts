@@ -7,6 +7,8 @@ import { LoginComponent } from './login/login.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { StocksComponent } from './stocks/stocks.component';
+import { MarketSectorsComponent } from './market-sectors/market-sectors.component';
 
 const routes: Routes = [
   { path: 'welcome', component: WelcomeComponent },
@@ -14,6 +16,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'forgotpassword', component: ForgotPasswordComponent },
+  { path: 'stocks', component: StocksComponent },
+  { path: 'marketsectors', component: MarketSectorsComponent },
   { path: '', component: WelcomeComponent },
   { path: '**', component: NotFoundComponent }
 ]

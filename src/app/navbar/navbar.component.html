@@ -6,16 +6,17 @@
     </div>
 
     <ul class="nav navbar-nav">
+      <li *ngIf="isLoggedIn()"><a href="/dashboard">Dashboard</a></li>
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Analyze <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="#">Stocks</a></li>
-          <li><a href="#">Sectors</a></li>
-          <li><a href="#">Crowdsourced Information</a></li>
+          <li><a href="/stocks">Stocks</a></li>
+          <li><a href="/marketsectors">Market Sectors</a></li>
+          <li><a href="/crowdsourced">Crowdsourced Information</a></li>
         </ul>
       </li>
-      <li><a href="#">Crowdsource</a></li>
-      <li><a href="#">Your Portfolio</a></li>
-      <li><a href="#">Reputation</a></li>
+      <li *ngIf="isLoggedIn()"><a href="/contribute">Crowdsource</a></li>
+      <li *ngIf="isLoggedIn()"><a href="/portfolio">Your Portfolio</a></li>
+      <li *ngIf="isLoggedIn()"><a href="/reputation">Reputation</a></li>
     </ul>
 
     <div id="navbar" class="navbar-collapse collapse" *ngIf="!isLoggedIn()">
@@ -31,6 +32,14 @@
       </form>
     </div>
 
-    <a class="navbar-brand align-right" *ngIf="isLoggedIn()" (click)="logout()">Log out</a>
+    <ul *ngIf="isLoggedIn()" class="nav navbar-nav align-right">
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">{{activeUsername}}<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Account</a></li>
+          <li><a href="#" (click)="logout()">Log out</a></li>
+        </ul>
+      </li>
+    </ul>
+    <!-- <a class="navbar-brand align-right" *ngIf="isLoggedIn()" (click)="logout()">Log out</a> -->
   </div>
 </nav>

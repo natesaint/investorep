@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 
 import { AuthenticationService } from '../_services/authentication.service';
+import { DashboardService } from '../_services/dashboard.service';
 import { regex } from '../_constants/regular-expressions';
 
 @Component({
@@ -12,10 +13,12 @@ import { regex } from '../_constants/regular-expressions';
 })
 export class NavbarComponent implements OnInit {
   loginCredentials: FormGroup;
+  activeUsername: string;
 
   constructor(private fb: FormBuilder,
               private authService: AuthenticationService,
-              private router: Router) {
+              private router: Router,
+              private dashboardService: DashboardService) {
     // Setup form fields
     this.loginCredentials = this.fb.group({
       email: ['', Validators.compose([Validators.required, Validators.email])],
@@ -24,6 +27,16 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.dashboardService.getInfo()
+        .subscribe(
+          data => {
+            this.activeUsername = data.username;
+          },
+          error => {
+            this.authService.logout();
+            //this.router.navigateByUrl('/login');
+          }
+        );
   }
 
   login(val) {

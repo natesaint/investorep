@@ -13,6 +13,8 @@ import { LoadingComponent } from './loading/loading.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { StocksComponent } from './stocks/stocks.component';
+import { MarketSectorsComponent } from './market-sectors/market-sectors.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { NavbarComponent } from './navbar/navbar.component';
     LoadingComponent,
     DashboardComponent,
     ForgotPasswordComponent,
-    NavbarComponent
+    NavbarComponent,
+    StocksComponent,
+    MarketSectorsComponent
   ],
   imports: [
     BrowserModule,

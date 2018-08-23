@@ -11,7 +11,7 @@ import { AuthenticationService } from '../_services/authentication.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  testUsername: string;
+  username: string;
 
   constructor(private dashboardService: DashboardService,
               private userService: UserService,
@@ -22,11 +22,10 @@ export class DashboardComponent implements OnInit {
     var test = this.dashboardService.getInfo()
                    .subscribe(
                      data => {
-                       this.testUsername = data.username;
+                       this.username = data.username;
                      },
                      error => {
                        this.authService.logout();
-                       this.router.navigateByUrl('/login');
                      }
                    );
   }
