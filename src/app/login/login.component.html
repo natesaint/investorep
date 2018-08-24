@@ -1,39 +1,48 @@
-<nav class="navbar navbar-inverse navbar-static-top bg-secondary">
+<nav class="navbar navbar-dark bg-dark navbar-expand-sm">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"></button>
       <a class="navbar-brand" routerLink="/welcome">Investorep</a>
     </div>
-    <div id="navbar" class="navbar-collapse collapse">
-      <a class="navbar-brand align-right" routerLink="/register">Sign up</a>
-    </div>
+
+    <ul class="navbar-nav align-right">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/register">Register</a>
+      </li>
+    </ul>
   </div>
 </nav>
 
-<div class="container">
-  <div class="col-xs-4 child">
-    <div class="panel register-login-background">
-      <h1 class="medium-header">Login</h1>
-      <div class="alert alert-danger" *ngIf="!validCredentials">
-        <strong>Invalid credentials:</strong> the entered e-mail address and password combination is not associated with an existing account.
-      </div>
-      <div class="panel-body">
-        <form role="form" [formGroup]="form" (ngSubmit)="login(form.value)">
-          <div class="form-group col-xs-12" [ngClass]="{ 'has-error': submitted && form.value.email === '' }">
-            <input type="text" formControlName="email" class="form-control input-lg" placeholder="E-mail Address"/>
-          </div>
+<div class="container py-3 top-spacing-reg-login">
+  <div class="row align-items-center">
+    <div class="mx-auto col-sm-5">
+      <div class="card">
+        <div class="card-header">
+          <h2 class="mb-0">Login</h2>
+        </div>
 
-          <div class="form-group col-xs-12" [ngClass]="{ 'has-error': submitted && form.value.password === '' }">
-            <input type="password" formControlName="password" class="form-control input-lg" placeholder="Password"/>
+        <div class="card-body">
+          <div class="alert alert-danger" *ngIf="!validCredentials">
+            <strong>Invalid credentials:</strong> the entered e-mail address and password combination is not associated with an existing account.
           </div>
+          <div class="panel-body">
+            <form role="form" [formGroup]="form" (ngSubmit)="login(form.value)">
+              <div class="form-group col-xs-12" [ngClass]="{ 'has-error': submitted && form.value.email === '' }">
+                <input type="text" formControlName="email" class="form-control form-control-lg" placeholder="E-mail Address"/>
+              </div>
 
-          <div class="text-center">
-            <input type="submit" value="Log in" class="btn-lg btn-success rounded">
+              <div class="form-group col-xs-12" [ngClass]="{ 'has-error': submitted && form.value.password === '' }">
+                <input type="password" formControlName="password" class="form-control form-control-lg" placeholder="Password"/>
+              </div>
+
+              <div class="text-center">
+                <input type="submit" value="Log in" class="btn-lg btn-success rounded">
+              </div>
+
+              <a class="navbar-brand link" routerLink="/forgotpassword">Forgot password?</a>
+              <a class="navbar-brand link1" routerLink="/register">Create an account</a>
+            </form>
           </div>
-
-          <a class="navbar-brand link" routerLink="/forgotpassword">Forgot password?</a>
-          <a class="navbar-brand link1" routerLink="/register">Create an account</a>
-        </form>
+        </div>
       </div>
     </div>
   </div>

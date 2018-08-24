@@ -25,6 +25,10 @@ h1 {
   min-width: 500px;
 }
 
+.min-width {
+  min-width: 500px;
+}
+
 .link {
   position: relative;
   left: 50%;

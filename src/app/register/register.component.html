@@ -1,72 +1,81 @@
-<nav class="navbar navbar-inverse navbar-static-top bg-secondary">
+<nav class="navbar navbar-dark bg-dark navbar-expand-sm">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"></button>
       <a class="navbar-brand" routerLink="/welcome">Investorep</a>
     </div>
-    <div id="navbar" class="navbar-collapse collapse">
-      <a class="navbar-brand align-right" routerLink="/login">Sign in</a>
-    </div>
+
+    <ul class="navbar-nav align-right">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/login">Log in</a>
+      </li>
+    </ul>
   </div>
 </nav>
 
-<div class="container">
-  <div class="col-xs-4 child">
-    <div class="panel register-login-background">
-      <h1 class="medium-header">Create an Account</h1>
-      <div class="alert alert-danger" *ngIf="accountDuplicate">
-        <strong>Cannot create account:</strong> the entered username or e-mail address is already associated with another account.
-      </div>
-      <div class="panel-body">
-        <form role="form" [formGroup]="form" (ngSubmit)="register(form.value)">
-          <div class="form-group col-xs-12" [ngClass]="{ 'has-error': submitted && !f.firstName.valid }">
-            <input type="text" formControlName="firstName" class="form-control input-lg" placeholder="First Name"/>
-            <div *ngIf="submitted && !f.firstName.valid" class="text-danger">
-              <div>* {{errors.firstName}}</div>
-            </div>
-          </div>
+<div class="container py-3 top-spacing-reg-login">
+  <div class="row align-items-center">
+    <div class="mx-auto col-sm-6">
+      <div class="card">
+        <div class="card-header">
+          <h2 class="mb-0">Create an Account</h2>
+        </div>
 
-          <div class="form-group col-xs-12" [ngClass]="{ 'has-error': submitted && !f.lastName.valid }">
-            <input type="text" formControlName="lastName" class="form-control input-lg" placeholder="Last Name"/>
-            <div *ngIf="submitted && !f.lastName.valid" class="text-danger">
-              <div>* {{errors.lastName}}</div>
-            </div>
+        <div class="card-body">
+          <div class="alert alert-danger" *ngIf="accountDuplicate">
+            <strong>Cannot create account:</strong> the entered username or e-mail address is already associated with another account.
           </div>
+          <div class="panel-body">
+            <form role="form" [formGroup]="form" (ngSubmit)="register(form.value)">
+              <div class="form-group col-xs-12" [ngClass]="{ 'has-error': submitted && !f.firstName.valid }">
+                <input type="text" formControlName="firstName" class="form-control form-control-lg" placeholder="First Name"/>
+                <div *ngIf="submitted && !f.firstName.valid" class="text-danger">
+                  <div>* {{errors.firstName}}</div>
+                </div>
+              </div>
 
-          <div class="form-group col-xs-12" [ngClass]="{ 'has-error': submitted && !f.username.valid }">
-            <input type="text" formControlName="username" class="form-control input-lg" placeholder="Username"/>
-            <div *ngIf="submitted && !f.username.valid" class="text-danger">
-              <div>* {{errors.username}}</div>
-            </div>
+              <div class="form-group col-xs-12" [ngClass]="{ 'has-error': submitted && !f.lastName.valid }">
+                <input type="text" formControlName="lastName" class="form-control form-control-lg" placeholder="Last Name"/>
+                <div *ngIf="submitted && !f.lastName.valid" class="text-danger">
+                  <div>* {{errors.lastName}}</div>
+                </div>
+              </div>
+
+              <div class="form-group col-xs-12" [ngClass]="{ 'has-error': submitted && !f.username.valid }">
+                <input type="text" formControlName="username" class="form-control form-control-lg" placeholder="Username"/>
+                <div *ngIf="submitted && !f.username.valid" class="text-danger">
+                  <div>* {{errors.username}}</div>
+                </div>
+              </div>
+
+              <div class="form-group col-xs-12" [ngClass]="{ 'has-error': submitted && !f.email.valid }">
+                <input type="text" formControlName="email" class="form-control form-control-lg" placeholder="E-mail Address"/>
+                <div *ngIf="submitted && !f.email.valid" class="text-danger">
+                  <div>* {{errors.email}}</div>
+                </div>
+              </div>
+
+              <div class="form-group col-xs-12" [ngClass]="{ 'has-error': submitted && !f.password.valid }">
+                <input type="password" formControlName="password" class="form-control form-control-lg" placeholder="Password"/>
+                <div *ngIf="submitted && !f.password.valid" class="text-danger">
+                  <div>* {{errors.password}}</div>
+                </div>
+              </div>
+
+              <div class="form-group col-xs-12" [ngClass]="{ 'has-error': submitted && !f.passwordConfirmation.valid }">
+                <input type="password" formControlName="passwordConfirmation" class="form-control form-control-lg" placeholder="Confirm Password"/>
+                <div *ngIf="submitted && (!f.passwordConfirmation.valid || !f.password.valid)" class="text-danger">
+                  <div>* {{errors.passwordConfirmation}}</div>
+                </div>
+              </div>
+
+              <div class="text-center">
+                <input type="submit" value="Sign up" class="btn-lg btn-success rounded"/>
+              </div>
+
+              <a class="navbar-brand link" routerLink="/login">Already have an account?</a>
+            </form>
           </div>
-
-          <div class="form-group col-xs-12" [ngClass]="{ 'has-error': submitted && !f.email.valid }">
-            <input type="text" formControlName="email" class="form-control input-lg" placeholder="E-mail Address"/>
-            <div *ngIf="submitted && !f.email.valid" class="text-danger">
-              <div>* {{errors.email}}</div>
-            </div>
-          </div>
-
-          <div class="form-group col-xs-12" [ngClass]="{ 'has-error': submitted && !f.password.valid }">
-            <input type="password" formControlName="password" class="form-control input-lg" placeholder="Password"/>
-            <div *ngIf="submitted && !f.password.valid" class="text-danger">
-              <div>* {{errors.password}}</div>
-            </div>
-          </div>
-
-          <div class="form-group col-xs-12" [ngClass]="{ 'has-error': submitted && !f.passwordConfirmation.valid }">
-            <input type="password" formControlName="passwordConfirmation" class="form-control input-lg" placeholder="Confirm Password"/>
-            <div *ngIf="submitted && (!f.passwordConfirmation.valid || !f.password.valid)" class="text-danger">
-              <div>* {{errors.passwordConfirmation}}</div>
-            </div>
-          </div>
-
-          <div class="text-center">
-            <input type="submit" value="Sign up" class="btn-lg btn-success rounded"/>
-          </div>
-
-          <a class="navbar-brand link" routerLink="/login">Already have an account?</a>
-        </form>
+        </div>
       </div>
     </div>
   </div>

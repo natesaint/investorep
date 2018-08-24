@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 
 import { UserService } from '../_services/user.service';
+import { AuthenticationService } from '../_services/authentication.service';
 import { User } from '../_models/user';
 import { PasswordValidation } from './password-match';
 import { errorMessages } from '../_constants/error-messages';
@@ -22,7 +23,8 @@ export class RegisterComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
               private router: Router,
-              private userService: UserService) {
+              private userService: UserService,
+              private authService: AuthenticationService) {
     // Setup the form fields
     this.form = this.fb.group({
       firstName: ['',            Validators.compose([Validators.required, Validators.pattern(regex.name)])],
@@ -39,6 +41,8 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
     this.submitted = false;
     this.loading = false;
+
+    this.authService.logout();
   }
 
   // Register a new user, send request only when format is validated and handle errors
