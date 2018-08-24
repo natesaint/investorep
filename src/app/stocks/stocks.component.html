@@ -1,1 +1,28 @@
 <app-navbar></app-navbar>
+
+<div class="container top-spacing">
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">$</span>
+    </div>
+    <input type="text" class="form-control form-control-lg" placeholder="Ticker Symbol" aria-label="Ticker">
+  </div>
+</div>
+
+<div class="container top-spacing">
+  <div class="card">
+    <div class="card-header">
+      <h2 class="mb-0">{{stockTicker}}</h2>
+    </div>
+    <div class="card-body">
+      <div *ngIf="!validTicker">
+        Invalid Ticker
+      </div>
+
+      <div *ngIf="validTicker">
+        Valid Ticker
+        {{currentPrice}}
+      </div>
+    </div>
+  </div>
+</div>

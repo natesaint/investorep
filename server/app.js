@@ -6,6 +6,7 @@ var index = require('./routes/index.js');
 var users = require('./routes/users.js');
 var auth = require('./routes/auth.js');
 var dashboard = require('./routes/dashboard.js');
+var stocks = require('./routes/stocks.js');
 
 var authMiddleware = require('./middlewares/auth.js');
 
@@ -22,6 +23,7 @@ app.use(prefix + '/', index);
 app.use(prefix + '/users', users);
 app.use(prefix + '/auth', auth);
 app.use(prefix + '/dashboard', dashboard);
+app.use(prefix + '/stocks', stocks);
 
 var server = app.listen(3000, function() {
         console.log('Running api on port: ' + server.address().port + ', access at /api/*');

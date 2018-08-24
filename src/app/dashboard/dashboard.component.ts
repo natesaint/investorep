@@ -19,15 +19,15 @@ export class DashboardComponent implements OnInit {
               private authService: AuthenticationService) { }
 
   ngOnInit() {
-    var test = this.dashboardService.getInfo()
-                   .subscribe(
-                     data => {
-                       this.username = data.username;
-                     },
-                     error => {
-                       this.authService.logout();
-                     }
-                   );
+    this.dashboardService.getInfo()
+        .subscribe(
+          data => {
+            this.username = data.username;
+          },
+          error => {
+            this.authService.logout();
+          }
+        );
   }
 
   logout() {
